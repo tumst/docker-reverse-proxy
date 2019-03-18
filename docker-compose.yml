@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /server/path/certs:/etc/nginx/certs:ro
+      - vhost:/etc/nginx/vhost.d
+      - /usr/share/nginx/html
+
+  letsencrypt:
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    restart: always
+    volumes:
+      - /server/path/certs:/etc/nginx/certs:rw
+      - /var/run/docker.soc:/var/run/docker.sock:ro
+      - vhost:/etc/nginx/vhost.d
+   
+  nginx:
+    image: nginx
+    restart: always
+    environment:
+      - VIRTUAL_HOST=example.com,www.example.com
+      - LETSENCRYPT_HOST=example.com,www.example.com
+      - LETSENCRYPT_EMAIL=tumoioio@gmail.com
+    volumes:
+      - ./server/example_index:/usr/share/nginx/html:ro
+
+volumes:
+  vhost:
+#networks:
+#  default:
+#    external:
+#      name: nginx-proxy-exam
+
+  
