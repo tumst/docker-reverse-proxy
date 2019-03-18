@@ -25,11 +25,13 @@ services:
     image: nginx
     restart: always
     environment:
-      - VIRTUAL_HOST=example.com,www.example.com
-      - LETSENCRYPT_HOST=example.com,www.example.com
+      #- VIRTUAL_HOST=example.com,www.example.com
+      - VIRTUAL_HOST=wanncosmetics-api.ddns.com
+      - LETSENCRYPT_HOST=wanncosmetics-api.ddns.com
       - LETSENCRYPT_EMAIL=tumoioio@gmail.com
     volumes:
-      - ./server/example_index:/usr/share/nginx/html:ro
+      - ./server/example_me:/usr/share/nginx/html:ro
+      #- ./server/example_index:/usr/share/nginx/html:ro
 
 volumes:
   vhost:
