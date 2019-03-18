@@ -26,8 +26,8 @@ services:
     restart: always
     environment:
       #- VIRTUAL_HOST=example.com,www.example.com
-      - VIRTUAL_HOST=wanncosmetics-api.ddns.com
-      - LETSENCRYPT_HOST=wanncosmetics-api.ddns.com
+      - VIRTUAL_HOST=wanncosmetics-api.ddns.net
+      - LETSENCRYPT_HOST=wanncosmetics-api.ddns.net
       - LETSENCRYPT_EMAIL=tumoioio@gmail.com
     volumes:
       - ./server/example_me:/usr/share/nginx/html:ro
