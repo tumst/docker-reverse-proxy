@@ -30,8 +30,9 @@ services:
       - LETSENCRYPT_HOST=wanncosmetics-api.ddns.net
       - LETSENCRYPT_EMAIL=tumoioio@gmail.com
     volumes:
-      - ./server/example_me:/usr/share/nginx/html:ro
+      - ./server/example_me:/usr/share/nginx/html:ro        # open html
       #- ./server/example_index:/usr/share/nginx/html:ro
+      # - conf.d:/etc/nginx/conf.d                               # open nginx conf.d proxy pass
 
 volumes:
   vhost:
