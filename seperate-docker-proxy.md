@@ -34,7 +34,7 @@ docker run -d --expose 80 --expose 443 \
 nginx
 ```
 
-subdomain
+subdomain use wanncosmetics-api.ddns.net
 ```
 docker run -d --expose 80 --expose 443 \
 --name example_container_tum \
@@ -42,7 +42,14 @@ docker run -d --expose 80 --expose 443 \
 -e "VIRTUAL_HOST=wanncosmetics-api.ddns.net" \
 -e "LETSENCRYPT_HOST=wanncosmetics-api.ddns.net" \
 -e "LETSENCRYPT_EMAIL=tumoioio@gmail.com" \
-nginx
+nginxhost
+```
+
+with api use another port
+```
+docker run -d --expose 3000 \
+--name node_container \
+-e "VIRTUAL_HOST=wanncosmetics-api.ddns.net"
 ```
 
 ## how to use

@@ -11,7 +11,6 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - /server/path/certs:/etc/nginx/certs:ro
       - vhost:/etc/nginx/vhost.d
-      - ./conf/com41.conf:/etc/enginx/conf.d/com41.conf
       - /usr/share/nginx/html
 
   letsencrypt:
@@ -27,15 +26,13 @@ services:
     restart: always
     environment:
       #- VIRTUAL_HOST=example.com,www.example.com
-      - VIRTUAL_HOST=wanncosmetics-api.ddns.net
-      - LETSENCRYPT_HOST=wanncosmetics-api.ddns.net
+      - VIRTUAL_HOST=server.wanncosmetics.com
+      - LETSENCRYPT_HOST=server.wanncosmetics.com
       - LETSENCRYPT_EMAIL=tumoioio@gmail.com
     volumes:
-      - ./server/example_me:/usr/share/nginx/html:ro        # open html
+      - ./server/example_me:/usr/share/nginx/html:ro
       #- ./server/example_index:/usr/share/nginx/html:ro
-      #- conf.d:/etc/nginx/conf.d                               # open nginx conf.d proxy pass
-      
-  
+      # - conf.d:/etc/nginx/conf.d                               # open nginx conf.d proxy pass
 
 volumes:
   vhost:
